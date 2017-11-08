@@ -11,5 +11,5 @@ export default Mn.Application.extend({
     this.showView(rootView);
     this.Router = new Router({ controller: rootView });
     Bn.history.start({ pushState: true });
-  },
+  }
 });

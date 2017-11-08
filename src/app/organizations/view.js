@@ -2,13 +2,18 @@ import Mn from 'backbone.marionette';
 import Template from './template.hbs';
 import OrganizationListView from './list/view';
 import AddOrganizationView from './add/view';
+import { APP_MESSAGE_CHANNEL } from '../utils';
+import SubMenu from '../root/submenu/model';
 
 export default Mn.View.extend({
   template: Template,
   regions: {
     organizations: '#organizations-region'
   },
-  initialize() {},
+  initialize(options) {
+    this.options = options;
+    console.log('options: ', options);
+  },
   onRender() {
     this.listOrganizations();
   },

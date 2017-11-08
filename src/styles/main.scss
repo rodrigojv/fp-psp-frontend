@@ -187,6 +187,46 @@ a {
   overflow: hidden;
 }
 
-#text-editor {
-  min-height: 150px;
+.fp-navbar {
+  background-color: #26e462;
+}
+
+.fp-navbar .navbar-nav > li > a {
+  color: #fff;
+}
+
+.fp-navbar .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:focus,
+.navbar-default .navbar-nav > .active > a:hover {
+  background-color: #29a74f;
+}
+
+.fp-navbar .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:focus,
+.navbar-default .navbar-nav > .open > a:hover {
+  background-color: #29a74f;
+}
+
+#sub-menu {
+  background-color: #ffffff;
+  font-family: "helvetica-regular", Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  height: 50px;
+  margin-bottom: 0px !important;
+  min-width: 770px;
+  z-index: 100;
+  border-color: #e7e7e7;
+}
+
+#sub-menu .navbar-collapse.collapse {
+  height: 40px;
+}
+
+#sub-menu a.navbar-brand {
+  padding: 10px 15px;
+  line-height: 30px;
+}
+
+#content {
+  margin: 60px;
 }
