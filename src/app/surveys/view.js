@@ -2,8 +2,7 @@ import Mn from 'backbone.marionette';
 import Template from './template.hbs';
 import ListView from './list/view';
 import AddView from './add/view';
-import { APP_MESSAGE_CHANNEL } from '../utils';
-import SubMenu from '../root/submenu/model';
+
 export default Mn.View.extend({
   template: Template,
   regions: {
@@ -12,14 +11,6 @@ export default Mn.View.extend({
   initialize() {},
   onRender() {
     this.list();
-
-    APP_MESSAGE_CHANNEL.trigger(
-      'update:submenu',
-      new SubMenu({
-        mainItem: { name: 'superman' },
-        navigationItems: [{ name: 'baz' }, { name: 'hola' }]
-      })
-    );
   },
   list() {
     const listView = new ListView({

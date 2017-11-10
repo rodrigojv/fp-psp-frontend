@@ -1,135 +1,180 @@
 @import "typography/typography";
 
-.navbar-brand {
-  padding: 0px;
-}
-.navbar-brand > img {
-  height: 100%;
-  padding: 15px;
-  width: auto;
+#content {
+  margin: 60px;
 }
 
-.panel-login {
+a {
+  transition: 0.25s all;
+}
+
+.navbar-brand {
+  padding: 0px;
+  > img {
+    height: 100%;
+    padding: 15px;
+    width: auto;
+  }
+}
+
+.fp-navbar {
+  background-color: #26e462;
+  .navbar-nav {
+    > li > a {
+      color: #fff;
+    }
+
+    > .active > a,
+    .navbar-default .navbar-nav > .active > a:focus,
+    .navbar-default .navbar-nav > .active > a:hover {
+      background-color: #29a74f;
+    }
+
+    > .open > a,
+    .navbar-default .navbar-nav > .open > a:focus,
+    .navbar-default .navbar-nav > .open > a:hover {
+      background-color: #29a74f;
+    }
+  }
+}
+
+#sub-header {
+  background-color: #ffffff;
+  font-family: "helvetica-regular", Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  height: 50px;
+  margin-bottom: 0px !important;
+  min-width: 770px;
+  z-index: 100;
+  border-color: rgba(#333, 0.85);
+
+  .navbar-collapse.collapse {
+    height: 40px;
+  }
+
+  a.navbar-brand {
+    padding: 10px 15px;
+    line-height: 30px;
+  }
+}
+
+div.fp-form {
   border-color: #ccc;
   -webkit-box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.2);
   -moz-box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.2);
   box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.2);
-}
-.panel-login > .panel-heading {
-  color: #00415d;
-  background-color: #fff;
-  border-color: #fff;
-  text-align: center;
-}
-.panel-login > .panel-heading a {
-  text-decoration: none;
-  color: #666;
-  font-weight: bold;
-  font-size: 15px;
-  -webkit-transition: all 0.1s linear;
-  -moz-transition: all 0.1s linear;
-  transition: all 0.1s linear;
-}
-.panel-login > .panel-heading a.active {
-  color: #029f5b;
-  font-size: 18px;
-}
-.panel-login > .panel-heading hr {
-  margin-top: 10px;
-  margin-bottom: 0px;
-  clear: both;
-  border: 0;
-  height: 1px;
-  background-image: -webkit-linear-gradient(
-    left,
-    rgba(0, 0, 0, 0),
-    rgba(0, 0, 0, 0.15),
-    rgba(0, 0, 0, 0)
-  );
-  background-image: -moz-linear-gradient(
-    left,
-    rgba(0, 0, 0, 0),
-    rgba(0, 0, 0, 0.15),
-    rgba(0, 0, 0, 0)
-  );
-  background-image: -ms-linear-gradient(
-    left,
-    rgba(0, 0, 0, 0),
-    rgba(0, 0, 0, 0.15),
-    rgba(0, 0, 0, 0)
-  );
-  background-image: -o-linear-gradient(
-    left,
-    rgba(0, 0, 0, 0),
-    rgba(0, 0, 0, 0.15),
-    rgba(0, 0, 0, 0)
-  );
-}
-.panel-login input[type="text"],
-.panel-login input[type="email"],
-.panel-login input[type="password"],
-.panel-login span.btn {
-  height: 45px;
-  border: 1px solid #ddd;
-  font-size: 16px;
-  -webkit-transition: all 0.1s linear;
-  -moz-transition: all 0.1s linear;
-  transition: all 0.1s linear;
-}
-.panel-login input:hover,
-.panel-login input:focus {
-  outline: none;
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-  box-shadow: none;
-  border-color: #ccc;
-}
-.btn-login {
-  background-color: #59b2e0;
-  outline: none;
-  color: #fff;
-  font-size: 14px;
-  height: auto;
-  font-weight: normal;
-  padding: 14px 0;
-  text-transform: uppercase;
-  border-color: #59b2e6;
-}
-.btn-login:hover,
-.btn-login:focus {
-  color: #fff;
-  background-color: #53a3cd;
-  border-color: #53a3cd;
+
+  > .panel-heading {
+    color: #00415d;
+    background-color: #fff;
+    border-color: #fff;
+    text-align: center;
+
+    a {
+      text-decoration: none;
+      color: #666;
+      font-weight: bold;
+      font-size: 15px;
+      -webkit-transition: all 0.1s linear;
+      -moz-transition: all 0.1s linear;
+      transition: all 0.1s linear;
+    }
+
+    a.active {
+      color: #029f5b;
+      font-size: 18px;
+    }
+  }
 }
 
-.forgot-password-container {
-  text-align: center;
+div.fp-form {
+  > .panel-heading {
+    hr {
+      margin-top: 10px;
+      margin-bottom: 0px;
+      clear: both;
+      border: 0;
+      height: 1px;
+      background-image: -webkit-linear-gradient(
+        left,
+        rgba(0, 0, 0, 0),
+        rgba(0, 0, 0, 0.15),
+        rgba(0, 0, 0, 0)
+      );
+      background-image: -moz-linear-gradient(
+        left,
+        rgba(0, 0, 0, 0),
+        rgba(0, 0, 0, 0.15),
+        rgba(0, 0, 0, 0)
+      );
+      background-image: -ms-linear-gradient(
+        left,
+        rgba(0, 0, 0, 0),
+        rgba(0, 0, 0, 0.15),
+        rgba(0, 0, 0, 0)
+      );
+      background-image: -o-linear-gradient(
+        left,
+        rgba(0, 0, 0, 0),
+        rgba(0, 0, 0, 0.15),
+        rgba(0, 0, 0, 0)
+      );
+    }
+  }
 }
-.forgot-password {
-  text-decoration: underline;
-  color: #888;
-}
-.forgot-password:hover,
-.forgot-password:focus {
-  text-decoration: underline;
-  color: #666;
-}
-.btn-register {
-  background-color: #1cb94e;
-  outline: none;
-  color: #fff;
-  font-size: 14px;
-  height: auto;
-  font-weight: normal;
-  padding: 14px 0;
-  text-transform: uppercase;
-  border-color: #1cb94a;
-}
-.btn-register:hover,
-.btn-register:focus {
-  color: #fff;
-  background-color: #1ca347;
-  border-color: #1ca347;
+
+div.fp-form {
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  span.btn {
+    height: 45px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    -webkit-transition: all 0.1s linear;
+    -moz-transition: all 0.1s linear;
+    transition: all 0.1s linear;
+  }
+  input:hover,
+  input:focus {
+    outline: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    border-color: #ccc;
+  }
+
+  .cancel-btn-container {
+    text-align: center;
+  }
+
+  .cancel-btn {
+    text-decoration: underline;
+    color: #888;
+  }
+  .cancel-btn:hover,
+  .cancel-btn:focus {
+    text-decoration: underline;
+    color: #666;
+  }
+
+  .save-btn {
+    background-color: #1cb94e;
+    outline: none;
+    color: #fff;
+    font-size: 14px;
+    height: auto;
+    font-weight: normal;
+    padding: 14px 0;
+    text-transform: uppercase;
+    border-color: #1cb94a;
+  }
+  .save-btn:hover,
+  .save-btn:focus {
+    color: #fff;
+    background-color: #1ca347;
+    border-color: #1ca347;
+  }
 }
 
 // Box shadow helper
@@ -143,9 +188,7 @@
       0 4px 15px 0 rgba(0, 0, 0, 0.15);
   }
 }
-a {
-  transition: 0.25s all;
-}
+
 .card {
   overflow: hidden;
   @include BoxShadowHelper(1);
@@ -158,6 +201,13 @@ a {
 .card-inverse .card-img-overlay {
   background-color: rgba(#333, 0.85);
   border-color: rgba(#333, 0.85);
+}
+
+.card img {
+  width: 100px;
+  height: 100px;
+  background: white url("/static/images/image-loader.gif") no-repeat center;
+  margin: 0 2px;
 }
 
 .search-container {
@@ -173,60 +223,25 @@ a {
 }
 
 .list-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: center;
+  margin-top: 15px;
+  overflow: hidden; /* simple clearfix */
 }
 
 .list-container > div {
-  width: 32%;
-  margin-bottom: 25px;
-  margin-right: 10px;
-  padding-right: 10px;
-  overflow: hidden;
+  float: left;
+  min-width: 15%;
+  padding: 10px;
 }
 
-.fp-navbar {
-  background-color: #26e462;
+/* but this is not removing the float: */
+@media only screen and (min-width: 150px) and (max-width: 780px) {
+  .list-container > div {
+    float: none;
+    min-width: 25%;
+    padding: 10px;
+  }
 }
 
-.fp-navbar .navbar-nav > li > a {
-  color: #fff;
-}
-
-.fp-navbar .navbar-nav > .active > a,
-.navbar-default .navbar-nav > .active > a:focus,
-.navbar-default .navbar-nav > .active > a:hover {
-  background-color: #29a74f;
-}
-
-.fp-navbar .navbar-nav > .open > a,
-.navbar-default .navbar-nav > .open > a:focus,
-.navbar-default .navbar-nav > .open > a:hover {
-  background-color: #29a74f;
-}
-
-#sub-menu {
-  background-color: #ffffff;
-  font-family: "helvetica-regular", Arial, Helvetica, sans-serif;
-  font-size: 12px;
-  height: 50px;
-  margin-bottom: 0px !important;
-  min-width: 770px;
-  z-index: 100;
-  border-color: #e7e7e7;
-}
-
-#sub-menu .navbar-collapse.collapse {
-  height: 40px;
-}
-
-#sub-menu a.navbar-brand {
-  padding: 10px 15px;
-  line-height: 30px;
-}
-
-#content {
-  margin: 60px;
+.list-container article.card {
+  margin: 0px;
 }

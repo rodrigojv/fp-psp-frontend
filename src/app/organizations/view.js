@@ -12,7 +12,6 @@ export default Mn.View.extend({
   },
   initialize(options) {
     this.options = options;
-    console.log('options: ', options);
   },
   onRender() {
     this.listOrganizations();

@@ -1,7 +1,9 @@
-<div>
+<div id="card-item">
   <!-- Card -->
   <article class="card animated fadeInLeft">
-    <img class="card-img-top img-responsive" src="{{organization.imageUrl}}" alt="Deer in nature" />
+    <a href="#organizations/{{organization.id}}">
+      <img class="card-img-top img-responsive img-thumbnail" src="{{imageUrl}}" alt="" />
+    </a>
     <div class="card-block">
       <h4 class="card-title">{{organization.name}}</h4>
       <h6 class="text-muted"></h6>
