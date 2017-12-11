@@ -7,6 +7,9 @@ export default Mn.CollectionView.extend({
   childEvents: {
     'delete:model': 'handleDelete'
   },
+  onRender() {
+    this.$el.find('#search').focus();
+  },
   onChildviewDeleteItem(childView) {
     this.collection.remove(childView.model);
   }
