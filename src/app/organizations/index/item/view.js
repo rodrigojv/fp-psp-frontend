@@ -1,6 +1,5 @@
 import Mn from 'backbone.marionette';
 import Template from './template.hbs';
-import faker from 'faker';
 
 export default Mn.View.extend({
   template: Template,
@@ -9,12 +8,8 @@ export default Mn.View.extend({
   },
   serializeData() {
     return {
-      organization: this.model.attributes,
-      imageUrl: this.getImage()
+      organization: this.model.attributes
     };
-  },
-  getImage() {
-    return faker.image.imageUrl(100, 100, 'people');
   },
   handleDelete() {
     event.preventDefault();

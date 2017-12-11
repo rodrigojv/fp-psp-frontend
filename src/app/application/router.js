@@ -3,18 +3,17 @@ import organizations from '../organizations/routes';
 import surveys from '../surveys/routes';
 import snapshots from '../snapshots/routes';
 import users from '../users/routes';
-import dashboard from '../dashboard/routes';
 import logout from '../logout/routes';
 import initAuthorizer from './router-authorizer';
 import families from '../families/routes';
 import home from '../home/routes';
 
-import _ from 'lodash';
+import merge from 'lodash/merge';
 
 const initRouter = props => {
   const { app, before, onAccessDenied } = props;
 
-  const { appRoutes, controller } = _.merge(
+  const { appRoutes, controller } = merge(
     logout(props),
     organizations(props),
     surveys(props),
@@ -23,7 +22,6 @@ const initRouter = props => {
     families(props),
     home(props)
   );
-
   const authorizer = initAuthorizer({
     onAccessDenied,
     session: app.getSession(),

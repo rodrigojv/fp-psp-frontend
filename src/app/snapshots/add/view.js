@@ -6,6 +6,7 @@ import ReactDOM from 'react-dom';
 import SurveyModel from '../../surveys/add/model';
 import SnapshotModel from './model';
 import _ from 'lodash';
+import $ from 'jquery';
 
 export default Mn.View.extend({
   template: Template,
@@ -55,10 +56,10 @@ export default Mn.View.extend({
     const { survey_schema } = this.surveyModel.attributes;
     const localizedSchema = this.getLocalizedSchema(survey_schema);
     const uiSchema = this.surveyModel.attributes.survey_ui_schema;
-    
+
     this.reactView = React.createElement(Form, {
       schema: localizedSchema,
-      uiSchema : uiSchema,
+      uiSchema: uiSchema,
       handleSubmit: this.hadleSubmit.bind(this),
       handleCancel: this.props.handleCancel,
       view: this
@@ -73,37 +74,44 @@ export default Mn.View.extend({
   onSurveySelectChange() {
     this.renderForm();
   },
-  getIndicators(formData ) {
+  getIndicators(formData) {
     return _.pick(
       formData,
       this.surveyModel.get('survey_ui_schema')['ui:group:indicators']
     );
   },
-  getEconomics( formData ) {
+  getEconomics(formData) {
     return _.pick(
       formData,
       this.surveyModel.get('survey_ui_schema')['ui:group:economics']
     );
   },
 
-  fixedGalleryFieldValue(formData){
-      var self = this;
-      var galleryFields = [];
-      var customFields = this.surveyModel.attributes.survey_ui_schema['ui:custom:fields'];
-  
-      $.each(customFields, function(i, item) {
-        if(item['ui:field'] && item['ui:field']==='gallery'){
-          var itemSelected = formData[i];
-          if(itemSelected && itemSelected!==undefined && Array.isArray(itemSelected)){
-            formData[i] = itemSelected[0]['value'];
-          }
-          self.surveyModel.attributes.survey_schema.properties[i]['type'] = 'string';
+  fixedGalleryFieldValue(formData) {
+    var self = this;
+    var galleryFields = [];
+    var customFields = this.surveyModel.attributes.survey_ui_schema[
+      'ui:custom:fields'
+    ];
+
+    $.each(customFields, function(i, item) {
+      if (item['ui:field'] && item['ui:field'] === 'gallery') {
+        var itemSelected = formData[i];
+        if (
+          itemSelected &&
+          itemSelected !== undefined &&
+          Array.isArray(itemSelected)
+        ) {
+          formData[i] = itemSelected[0]['value'];
         }
-      });
+        self.surveyModel.attributes.survey_schema.properties[i]['type'] =
+          'string';
+      }
+    });
   },
 
   hadleSubmit(formResult) {
-    //Convert from array to string, using property "value" 
+    //Convert from array to string, using property "value"
     this.fixedGalleryFieldValue(formResult);
 
     const snapshot = {

@@ -1,6 +1,7 @@
 import Bn from 'backbone';
 import Mn from 'backbone.marionette';
-import _ from 'lodash';
+import _isRegExp from 'lodash/fp/isRegExp';
+import _isFunction from 'lodash/fp/isFunction';
 
 export default Mn.AppRouter.extend({
   initialize(options) {
@@ -10,9 +11,9 @@ export default Mn.AppRouter.extend({
   before() {},
   after() {},
   route(route, name, callback) {
-    if (!_.isRegExp(route)) route = this._routeToRegExp(route);
+    if (!_isRegExp(route)) route = this._routeToRegExp(route);
 
-    if (_.isFunction(name)) {
+    if (_isFunction(name)) {
       callback = name;
       name = '';
     }

@@ -1,4 +1,6 @@
-import _ from 'lodash';
+import _isRegExp from 'lodash/fp/isRegExp';
+import _includes from 'lodash/includes';
+import _keys from 'lodash/fp/keys';
 
 const anonymousRoutes = ['', 'home', 'logout'];
 
@@ -37,7 +39,7 @@ class Authorizer {
     this.onAccessDenied = onAccessDenied;
   }
   getAuthorizedRoutes() {
-    const routesKeys = _.keys(this.appRoutes);
+    const routesKeys = _keys(this.appRoutes);
     if (this.session.userHasRole('ROLE_ROOT')) {
       return routesKeys;
     }
@@ -51,16 +53,16 @@ class Authorizer {
     // other organizations.
     if (this.session.userHasRole('ROLE_APP_ADMIN')) {
       return routesKeys
-        .filter(route => !_.includes(adminCrudRoutes.organizations, route))
-        .filter(route => !_.includes(adminCrudRoutes.users, route))
-        .filter(route => !_.includes(adminCrudRoutes.families, route));
+        .filter(route => !_includes(adminCrudRoutes.organizations, route))
+        .filter(route => !_includes(adminCrudRoutes.users, route))
+        .filter(route => !_includes(adminCrudRoutes.families, route));
     }
 
     // regular user
     return routesKeys
-      .filter(route => !_.includes(adminCrudRoutes.organizations, route))
-      .filter(route => !_.includes(adminCrudRoutes.users, route))
-      .filter(route => !_.includes(adminCrudRoutes.families, route));
+      .filter(route => !_includes(adminCrudRoutes.organizations, route))
+      .filter(route => !_includes(adminCrudRoutes.users, route))
+      .filter(route => !_includes(adminCrudRoutes.families, route));
   }
 
   isAuthorizedRoute(routeParam) {
@@ -71,14 +73,12 @@ class Authorizer {
 
     const authorizedRoutes = this.getAuthorizedRoutes()
       .map(route => {
-        if (!_.isRegExp(route)) return _routeToRegExp(route);
+        if (!_isRegExp(route)) return _routeToRegExp(route);
         else return route;
       })
       .filter(route => route === routeParam || route.test(routeParam));
 
-    return (
-      _.includes(anonymousRoutes, baseRoute) || authorizedRoutes.length > 0
-    );
+    return _includes(anonymousRoutes, baseRoute) || authorizedRoutes.length > 0;
   }
   canAccess(route) {
     if (!this.isAuthorizedRoute(route)) {

@@ -1,7 +1,7 @@
 import Bb from 'backbone';
 import { LocalStorage } from 'backbone.localstorage';
 import env from './env';
-import _ from 'lodash';
+import _includes from 'lodash/includes';
 
 /**
  * Saves user session info in browser localStorage,
@@ -42,7 +42,7 @@ var SessionModel = Bb.Model.extend({
       return false;
     }
     const auths = this.get('user').authorities.map(auth => auth.authority);
-    return _.includes(auths, roleName);
+    return _includes(auths, roleName);
   },
   userIsOrganizationAdmin() {
     if (!this.isAuthenticationEnabled()) {
