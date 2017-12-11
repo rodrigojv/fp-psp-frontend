@@ -6,6 +6,7 @@ import sessionMgr from './session-manager';
 import FlashesService from '../flashes/service';
 import ModalService from '../modal/service';
 import $ from 'jquery';
+import nprogress from 'nprogress';
 
 export default Mn.Application.extend({
   region: '#main',
@@ -20,6 +21,9 @@ export default Mn.Application.extend({
       this.sessionMgr.toLoginPage();
       return;
     }
+    nprogress.configure({
+      showSpinner: false
+    });
 
     ModalService.setup({
       container: this.layoutView.getRegion('overlay')
@@ -41,11 +45,6 @@ export default Mn.Application.extend({
 
     Bb.history.start();
     this.showView(this.layoutView);
-
-    FlashesService.request('add', {
-      type: 'danger',
-      title: 'Server Error'
-    });
   },
   getSession() {
     return this.sessionMgr.getSession();
@@ -83,10 +82,10 @@ export default Mn.Application.extend({
       },
       statusCode: {
         401: () => {
-          this.redirectToLoginAfterError();
+          this.sessionMgr.redirectToLoginAfterError();
         },
         403: () => {
-          this.redirectToDeniedPage();
+          this.sessionMgr.redirectToDeniedPage();
         },
         500: () => {
           FlashesService.request('add', {
@@ -94,6 +93,15 @@ export default Mn.Application.extend({
             title: 'Server Error'
           });
         }
+      }
+    });
+
+    $(document).on({
+      ajaxStart: () => {
+        nprogress.start();
+      },
+      ajaxComplete: () => {
+        nprogress.done();
       }
     });
   }

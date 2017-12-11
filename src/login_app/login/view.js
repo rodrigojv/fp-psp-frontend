@@ -3,6 +3,7 @@ import Template from './template.hbs';
 import env from '../env';
 import $ from 'jquery';
 import session from '../../common/session';
+import utils from '../../common/utils';
 
 export default Mn.View.extend({
   template: Template,
@@ -16,6 +17,8 @@ export default Mn.View.extend({
     session.fetch();
   },
   doLogin(event) {
+    let loginBtn = this.$el.find('#btn-login');
+    let button = utils.getLoadingButton(loginBtn);
     event.preventDefault();
     var url = `${env.API_AUTH}/token`;
 
@@ -32,7 +35,7 @@ export default Mn.View.extend({
 
     var clientid = 'barClientIdPassword';
     var clientsecret = 'secret';
-
+    button.loading();
     $.ajax({
       url: url,
       type: 'POST',
@@ -65,6 +68,9 @@ export default Mn.View.extend({
           $('#login-password').val('');
           $('#login-username').focus();
         }
+      },
+      complete: () => {
+        button.reset();
       }
     });
   }

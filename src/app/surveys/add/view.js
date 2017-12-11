@@ -2,11 +2,11 @@ import Mn from 'backbone.marionette';
 import Template from './template.hbs';
 import Model from './model';
 import CodeMirror from 'codemirror';
+import utils from '../../utils';
 
 export default Mn.View.extend({
   template: Template,
   events: {
-    'click #cancel': 'handleCancel',
     'click #submit': 'handleSubmit'
   },
   initialize(options) {
@@ -33,16 +33,15 @@ export default Mn.View.extend({
     this.schema.refresh();
     this.schemaUI.refresh();
   },
-  handleCancel() {
-    this.props.listSurveys();
-  },
   serializeData() {
     return {
       survey: this.model.attributes
     };
   },
   handleSubmit(event) {
+    const button = utils.getLoadingButton(this.$el.find('#submit'));
     event.preventDefault();
+    button.loading();
 
     // We manually add form values to model,
     // the form -> model binding should ideally
@@ -57,8 +56,11 @@ export default Mn.View.extend({
     this.model.set('survey_schema', JSON.parse(this.schema.getValue()));
     this.model.set('survey_ui_schema', JSON.parse(this.schemaUI.getValue()));
 
-    this.model.save().then(result => {
-      this.props.listSurveys();
-    });
+    this.model
+      .save()
+      .then(result => {
+        this.props.listSurveys();
+      })
+      .always(() => button.reset());
   }
 });

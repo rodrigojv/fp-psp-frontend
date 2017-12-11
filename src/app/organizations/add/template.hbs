@@ -1,73 +1,58 @@
-
 <div class="row">
   <div class="col-md-4 col-md-offset-4">
-<article class="card animated fadeInLeft">
+    <article class="card animated fadeInLeft">
 
-  <div class="card-block">
-    <div class="card-title">
-      <h4 > Agregar Empresa
-        <img class="pull-right" src="/static/images/icon_more.png" >
-      </h4>
-    </div>
-    <br>
-    <div class="" id="img-cam">
-      <img class="card-img-top img-responsive center-block"  src="/static/images/icon_camara.png" alt="" />
-      <p class="text-center">Arrastra la imagen aqui</p>
-    </div>
+      <div class="card-block">
+        <div class="card-title">
+          <h4> Agregar Empresa
+            <img class="pull-right" src="/static/images/icon_more.png">
+          </h4>
+        </div>
+        <br>
+        <div class="" id="img-cam">
+          <img class="card-img-top img-responsive center-block" src="/static/images/icon_camara.png" alt="" />
+          <p class="text-center">Arrastra la imagen aqui</p>
+        </div>
 
 
-      <br><br>
-        <div class="" id="add-organization">
-      <form data-toggle="validator" role="form" class="form-vertical" id="form">
-        <div class="alert alert-warning" style="display:none">
-          <strong>¡Atención! Todos los campos con asterisco son obligatorios</strong>
-        </div>
-        <div class="form-group">
-          <input value="{{organization.name}}" type="text" class="form-control" name="name" value="" placeholder="Nombre de la empresa"
-            required>
-        </div>
-        <div class="form-group">
-          <input value="{{organization.description}}" type="text" class="form-control" name="description" placeholder="Telefono"
-            required>
-        </div>
-        <div class="form-group">
-          <input value="{{organization.description}}" type="text" class="form-control" name="description" placeholder="Contacto"
-            required>
-        </div>
-        <div class="form-group">
-          <input value="{{organization.description}}" type="text" class="form-control" name="description" placeholder="Email"
-            required>
-        </div>
-        <!--div class="form-group">
-          <label>Country</label>
-          <select class="form-control" name="country">
-            <option>Paraguay</option>
-            <option>United States</option>
-          </select>
-        </div-->
-        <div class="form-group">
-          <div class="row">
-            <div class="col-sm-12">
-              <button type="submit" name="register-submit" id="submit" class="btn" value="Save">AGREGAR EMPRESA</button>
+        <br>
+        <br>
+        <div class="fp-form-container" id="add-organization">
+          <form data-toggle="validator" role="form" class="form-vertical" id="form">
+            <div class="alert alert-warning" style="display:none">
+              <strong>¡Atención! Todos los campos con asterisco son obligatorios</strong>
             </div>
-          </div>
-        </div>
-        <div class="form-group">
-              <div class="cancel-btn-container text-center">
-                <a href="#organizations" id="cancel" tabindex="5" class="cancel-btn ">Cancelar</a>
+            <div class="form-group">
+              <input value="{{organization.name}}" type="text" class="form-control" name="name" value="" placeholder="Nombre de la empresa"
+                required>
+            </div>
+            <div class="form-group">
+              <input value="{{organization.description}}" type="text" class="form-control" name="description" placeholder="Telefono" required>
+            </div>
+            <div class="form-group">
+              <input value="{{organization.description}}" type="text" class="form-control" name="description" placeholder="Contacto" required>
+            </div>
+            <div class="form-group">
+              <input value="{{organization.description}}" type="text" class="form-control" name="description" placeholder="Email" required>
+            </div>
+
+            <div class="form-group">
+              <div class="row">
+                <div class="col-sm-12">
+                  <button type="submit" name="register-submit" id="submit" class="btn" value="Save">AGREGAR EMPRESA</button>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="text-center">
+                <a href="#organizations" id="cancel" tabindex="5" class="">Cancelar</a>
               </div>
 
-        </div>
-      </form>
+            </div>
+          </form>
 
-    <!--a id="delete" href="#" class="icon">
-      <span class="glyphicon glyphicon-trash pull-right"></span>
-    </a>
-    <a id="edit" href="#" class="icon">
-      <span class="glyphicon glyphicon-pencil pull-right"></span>
-    </a-->
+        </div>
+      </div>
+    </article>
   </div>
-  </div>
-</article>
-</div>
 </div>

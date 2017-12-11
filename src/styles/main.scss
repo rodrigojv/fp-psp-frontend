@@ -1,4 +1,5 @@
-@import "typography/typography";
+@import "base/base";
+@import "../common/styles";
 
 html {
   position: relative;
@@ -122,12 +123,7 @@ a {
   }
 }
 
-div.fp-form {
-  border-color: #ccc;
-  -webkit-box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.2);
-  -moz-box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.2);
-  box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.2);
-
+div.fp-form-container {
   > .panel-heading {
     color: #00415d;
     background-color: #fff;
@@ -151,7 +147,7 @@ div.fp-form {
   }
 }
 
-div.fp-form {
+div.fp-form-container {
   > .panel-heading {
     hr {
       margin-top: 10px;
@@ -187,58 +183,8 @@ div.fp-form {
   }
 }
 
-div.fp-form {
-  input[type="text"],
-  input[type="email"],
-  input[type="password"],
-  span.btn {
-    height: 45px;
-    border: 1px solid #ddd;
-    font-size: 16px;
-    -webkit-transition: all 0.1s linear;
-    -moz-transition: all 0.1s linear;
-    transition: all 0.1s linear;
-  }
-  input:hover,
-  input:focus {
-    outline: none;
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    box-shadow: none;
-    border-color: #ccc;
-  }
-
-  .cancel-btn-container {
-    text-align: center;
-  }
-
-  .cancel-btn {
-    text-decoration: underline;
-    color: #888;
-  }
-  .cancel-btn:hover,
-  .cancel-btn:focus {
-    text-decoration: underline;
-    color: #666;
-  }
-
-  .save-btn {
-    background-color: #1cb94e;
-    outline: none;
-    color: #fff;
-    font-size: 14px;
-    height: auto;
-    font-weight: normal;
-    padding: 14px 0;
-    text-transform: uppercase;
-    border-color: #1cb94a;
-  }
-  .save-btn:hover,
-  .save-btn:focus {
-    color: #fff;
-    background-color: #1ca347;
-    border-color: #1ca347;
-  }
+.btn-has-spinner {
+  position: relative;
 }
 
 // Box shadow helper
@@ -267,17 +213,6 @@ div.fp-form {
   border-color: rgba(#333, 0.85);
 }
 
-/*#card-item{
-  .card img{
-      width: 100px;
-      height: 100px;
-      background: white url("/static/images/image-loader.gif") no-repeat center;
-      margin: 0 2px;
-
-
-  }
-
-}*/
 .img-card {
   width: 100px;
   height: 100px;
@@ -308,14 +243,22 @@ div.fp-form {
 .list-container {
   margin-top: 15px;
   overflow: hidden; /* simple clearfix */
+
+  > div {
+    float: left;
+    min-width: 20%;
+    padding: 2%;
+  }
+  article.card {
+    margin: 0px;
+  }
 }
 
-.list-container > div {
-  float: left;
-  min-width: 20%;
-  padding: 2%;
+#organization-list {
+  &:empty {
+    @include screen-skeleton(40px);
+  }
 }
-
 /* but this is not removing the float: */
 @media only screen and (min-width: 150px) and (max-width: 780px) {
   .list-container > div {
@@ -323,10 +266,6 @@ div.fp-form {
     min-width: 25%;
     padding: 10px;
   }
-}
-
-.list-container article.card {
-  margin: 0px;
 }
 
 .footer {
@@ -757,8 +696,6 @@ article {
 
 //ORGANIZATIONS
 .search::-webkit-input-placeholder {
-  //color: transparent;
-  //text-indent: -9999px;
   padding-left: 8%;
   background: url("/static/images/icon_buscar.png") no-repeat scroll 7px 7px;
   background-position: 1% 50%;
@@ -809,8 +746,8 @@ article {
   }
 }
 
-#add-organization {
-  > form {
+div.fp-form-container {
+  form {
     padding-left: 10%;
     padding-right: 10%;
 
@@ -858,6 +795,7 @@ article {
   font-weight: 400;
   font-size: 13px;
   color: #ffffff;
+  width: 100%;
 }
 #loginbox {
   background: #ffffff;

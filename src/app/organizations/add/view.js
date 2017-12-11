@@ -3,6 +3,7 @@ import Template from './template.hbs';
 import Model from '../model';
 import storage from '../storage';
 import { history } from 'backbone';
+import utils from '../../utils';
 
 export default Mn.View.extend({
   template: Template,
@@ -20,6 +21,7 @@ export default Mn.View.extend({
   },
   handleSubmit(event) {
     event.preventDefault();
+    const button = utils.getLoadingButton(this.$el.find('#submit'));
 
     // We manually add form values to model,
     // the form -> model binding should ideally
@@ -30,9 +32,15 @@ export default Mn.View.extend({
       .forEach(element => {
         this.model.set(element.name, element.value);
       });
-
-    storage.save(this.model).then(model => {
-      history.navigate('organizations', { trigger: true });
-    });
+    button.loading();
+    storage
+      .save(this.model)
+      .then(model => {
+        button.reset();
+        history.navigate('organizations', { trigger: true });
+      })
+      .always(() => {
+        button.reset();
+      });
   }
 });
