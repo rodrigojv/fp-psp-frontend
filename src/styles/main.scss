@@ -806,3 +806,62 @@ div.fp-form-container {
     margin-bottom: 25px;
   }
 }
+
+// Family Snapshots -jdferreira
+#family-snapshot{
+
+  >img{
+    width: 70%;
+    height: auto;
+  }
+    padding: 10px;
+    position: relative;
+    height: auto;
+    width: 100%;
+
+    .centered {
+        position: absolute;
+        top: 40%;
+        left: 3%;
+        transform: translate(-50%, -50%);
+        color: #ccccca;
+        font-family: "Roboto";
+        font-weight: 700;
+        font-size: 20px;
+    }
+
+  >span{
+    color: #ffffff;
+    font-family: "Roboto";
+    font-weight: 400;
+  }
+  > #green{
+    background-color: #50aa47;
+    position: absolute;
+    top: 8%;
+    left: 35%;
+    border-radius: 50%;
+    padding: 22px;
+    font-size: 32px;
+  }
+  >#yellow{
+
+    background-color: #f0cc39;
+    position: absolute;
+    top: 33%;
+    left: 37%;
+    border-radius: 50%;
+    padding: 20px;
+    font-size: 24px;
+  }
+  >#red{
+    background-color: #e0504c;
+    position: absolute;
+    top: 56%;
+    left: 40%;
+    border-radius: 50%;
+    padding: 15px;
+    font-size: 21px;
+  }
+}
+/* ########## */

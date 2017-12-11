@@ -6,21 +6,18 @@ var FamiliesStorage = Storage.extend({
   getSubHeaderItems(model) {
     return {
       mainItem: {
-        name: model.get('name'),
-        link: `/#organizations/${model.get('id')}`
+        name: 'Families',
+        link: `/#families`
       },
       navigationItems: [
+
         {
-          name: 'Families',
-          link: `/#organizations/${model.get('id')}/families`
+          name: 'Intervenciones',
+          link: `/#families/interventions`
         },
         {
-          name: 'Users',
-          link: `/#organizations/${model.get('id')}/users`
-        },
-        {
-          name: 'Indicators',
-          link: `/#organizations/${model.get('id')}/indicators`
+          name: 'Snapshots',
+          link: `/#families/snapshots`
         }
       ]
     };
