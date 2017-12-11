@@ -21,20 +21,19 @@ const tests = 'tests/';
 const config = [
   {
     dist: 'dist/',
-    html: 'index.html',
-    webpackEntry: webpackConfig.entry.main
+    html: 'index.html'
   },
   {
     dist: 'dist/login/',
-    html: 'login.html',
-    webpackEntry: webpackConfig.entry.login_main
+    html: 'login.html'
   }
 ];
 
 gulp.task('scripts', () => {
-  return gulp
-    .src([webpackConfig.entry.main])
-    .pipe($.webpackStream(webpackConfig))
+  let entryPoint = webpackConfig.entryPointsConfig.main;
+  gulp
+    .src([entryPoint.fullPath])
+    .pipe($.webpackStream(webpackConfig.getConfig(entryPoint.webpackEntry)))
     .on('error', function(error) {
       $.util.log($.util.colors.red(error.message));
       this.emit('end');
@@ -45,9 +44,10 @@ gulp.task('scripts', () => {
 });
 
 gulp.task('scripts:login', () => {
-  return gulp
-    .src([webpackConfig.entry.login_main])
-    .pipe($.webpackStream(webpackConfig))
+  let entryPoint = webpackConfig.entryPointsConfig.login_main;
+  gulp
+    .src([entryPoint.fullPath])
+    .pipe($.webpackStream(webpackConfig.getConfig(entryPoint.webpackEntry)))
     .on('error', function(error) {
       $.util.log($.util.colors.red(error.message));
       this.emit('end');
@@ -109,13 +109,13 @@ gulp.task('static', cb => {
 });
 
 gulp.task('watch', () => {
-  gulp.watch(src + 'styles/**/*.scss', ['styles']);
+  gulp.watch([src + 'styles/**/*.scss', src + 'common/**/*.scss'], ['styles']);
   gulp.watch([src + 'index.html', src + 'login.html'], ['html']);
-  gulp.watch([src + 'app/**/*.js', src + 'app/**/*.hbs'], ['scripts']);
-  gulp.watch(
-    [src + 'login_app/**/*.js', src + 'login_app/**/*.hbs'],
-    ['scripts:login']
-  );
+
+  // gulp.watch(
+  //   [src + 'login_app/**/*.js', src + 'login_app/**/*.hbs'],
+  //   ['scripts:login']
+  // );
 });
 
 gulp.task('lint', () => {
@@ -146,7 +146,6 @@ gulp.task('build', cb => {
     $.runSequence(
       'clean',
       'environment',
-      'test',
       'static',
       'html',
       'html:denied',
