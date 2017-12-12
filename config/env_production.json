@@ -1,5 +1,7 @@
 {
-  "API": "https://jsonplaceholder.typicode.com",
-  "API_AUTH": "http://127.0.0.1:8080/oauth",
-  "authenticationEnabled": true
+  "API": "http://povertystoplight-env.us-east-2.elasticbeanstalk.com/api/v1",
+  "API_AUTH":
+    "http://povertystoplight-env.us-east-2.elasticbeanstalk.com/oauth",
+  "authenticationEnabled": true,
+  "GOOGLEKEY": "AIzaSyAOJGqHfbWY_u7XhRnLi7EbVjdK-osBgAM"
 }

@@ -12,6 +12,8 @@ const isProduction = environment === 'production';
 const webpackConfig = require('./webpack.config.js')[environment];
 const merge = require('merge-stream');
 const rename = require('gulp-rename');
+const imagemin = require('gulp-imagemin');
+const noop = require('gulp-noop');
 
 const port = $.util.env.port || 9000;
 const src = 'src/';
@@ -101,11 +103,18 @@ gulp.task('serve', () => {
   });
 });
 
-gulp.task('static', cb => {
-  return gulp
-    .src(src + 'static/**/*')
-    .pipe($.size({ title: 'static' }))
-    .pipe(gulp.dest(dist + 'static/'));
+gulp.task('static', () => {
+  let fonts = gulp
+    .src(src + 'static/fonts/*')
+    .pipe($.size({ title: 'static/fonts' }))
+    .pipe(gulp.dest(dist + 'static/fonts/'));
+  let images = gulp
+    .src(src + 'static/images/*')
+    .pipe($.size({ title: 'static/images' }))
+    .pipe(isProduction ? imagemin() : noop())
+    .pipe(gulp.dest(dist + 'static/images/'));
+
+  return merge(fonts, images);
 });
 
 gulp.task('watch', () => {
