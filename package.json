@@ -93,7 +93,7 @@
     "react-jsonschema-form": "^0.50.1"
   },
   "lint-staged": {
-    "*.js": ["eslint --fix", "git add"],
+    "*.js": ["eslint --fix --ignore-path .gitignore src/**/*.js", "git add"],
     "*.json": ["prettier --write", "git add"],
     "*.md": ["prettier --write", "git add"],
     "*.scss": ["prettier --write", "git add"]
@@ -101,6 +101,7 @@
   "scripts": {
     "start": "gulp",
     "build": "gulp build --type production",
+    "build:UK": "gulp build --type production --region UK",
     "fix:config": "prettier --ignore-path .gitignore --write \"**/*.json\"",
     "fix:docs": "prettier --ignore-path .gitignore --write \"**/*.md\"",
     "fix:script": "npm run lint -- --fix",
