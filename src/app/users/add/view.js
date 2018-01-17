@@ -213,6 +213,7 @@ export default Mn.View.extend({
     // TODO!
     // Create new model for this
     // do not change the urlRoot.
+    // Or else just user /users, i.e the existing model without changing the url.
     userModel.urlRoot = `${env.API}/users/addUserRoleApplication`;
     storage
       .save(userModel)
