@@ -1,11 +1,8 @@
 /* eslint-disable */
-var path = require("path");
+var path = require('path');
 var webpack = require('webpack');
 
-
-
 module.exports = function(config) {
-
   config.set({
     basePath: '',
 
@@ -27,7 +24,11 @@ module.exports = function(config) {
         loaders: [
           { test: /\.js?$/, exclude: /node_modules/, loader: 'babel-loader' },
           { test: /\.hbs$/, loader: 'handlebars-loader' },
-          { test: /\.json$/, loader: 'json-loader' }
+          { test: /\.json$/, loader: 'json-loader' },
+          {
+            test: /\.(png|jp(e*)g|svg)$/,
+            loader: 'url-loader'
+          }
         ]
       }
     },
