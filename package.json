@@ -68,6 +68,7 @@
     "sass-loader": "^4.1.1",
     "scottyjs": "^1.10.0",
     "style-loader": "^0.19.1",
+    "url-loader": "^1.0.1",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.7.0",

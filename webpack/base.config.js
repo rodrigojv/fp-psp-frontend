@@ -1,5 +1,5 @@
 /* eslint import/no-extraneous-dependencies:0 */
-var path = require("path");
+var path = require('path');
 var webpack = require('webpack');
 
 module.exports = {
@@ -9,7 +9,7 @@ module.exports = {
     vendor: ['jquery', 'bootstrap', 'backbone', 'backbone.marionette', 'lodash']
   },
   resolve: {
-    fallback: path.join(__dirname, "helpers")
+    fallback: path.join(__dirname, 'helpers')
   },
   module: {
     loaders: [
@@ -19,6 +19,10 @@ module.exports = {
       {
         test: /bootstrap.+\.(jsx|js)$/,
         loader: 'imports?jQuery=jquery,$=jquery,this=>window'
+      },
+      {
+        test: /\.(png|jp(e*)g|svg)$/,
+        loader: 'url-loader'
       }
     ]
   },
