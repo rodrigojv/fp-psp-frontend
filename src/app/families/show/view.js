@@ -100,10 +100,12 @@ export default Mn.View.extend({
     this.app.getSession().save({reAnswer: false, formData: null});
     const model = new TermCondPolModel();
     const app = this.app;
+    const language = this.app.getSession().getLocale() === 'es_PY' ? 'ESP' : 'ENG';
     model
       .fetch({
         data: {
-          type: 'TC'
+          type: 'TC',
+          language
         }
       })
       .then(() => {
@@ -118,6 +120,6 @@ export default Mn.View.extend({
         }));
       });
 
-    Bn.history.navigate(`/survey/${this.model.attributes.snapshot_indicators.survey_id}/termcondpol/TC`);
+    Bn.history.navigate(`/survey/${this.model.attributes.snapshot_indicators.survey_id}/termcondpol/TC/ESP`);
   }
 });

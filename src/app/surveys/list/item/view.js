@@ -65,10 +65,11 @@ export default Mn.View.extend({
 
   handlerTermsAndConditions(event){
     event.preventDefault();
+    const language = this.app.getSession().getLocale() === 'es_PY' ? 'ESP' : 'ENG';
       if (!session.userHasRole('ROLE_USER') && !session.userHasRole('ROLE_SURVEY_USER')) {
         return;
       }
-    Bn.history.navigate(`/survey/${this.model.attributes.id}/termcondpol/TC`, true);
+    Bn.history.navigate(`/survey/${this.model.attributes.id}/termcondpol/TC/${language}`, true);
   },
 
   handleAnswer(event) {

@@ -51,7 +51,8 @@ export default Mn.View.extend({
       termCondPolModel
         .fetch({
           data: {
-            type: 'PRIV'
+            type: 'PRIV',
+            language: this.app.getSession().getLocale() === 'es_PY' ? 'ESP' : 'ENG'
           }
         })
         .then(() => {
